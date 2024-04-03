@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Development.Dev.dto.DealClass;
 import com.Development.Dev.dto.CoinClass;
 import com.Development.Dev.dto.TrendClass;
+import com.Development.Dev.dto.ExchangesClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,22 @@ public class MainController {
 
         return trends;
     }
+    @GetMapping("/exchanges")
+    public List<ExchangesClass> getExchanges() {
+        // Создаем список изменений
+        List<ExchangesClass> exchanges = new ArrayList<>();
 
+        ExchangesClass exchange1=new ExchangesClass();
+        exchange1.setName("Binance");
+        exchange1.setScore(9.0);
+        exchange1.setVolume24h(364578658725.0);
+        exchange1.setMarkets(67.0);
+        exchange1.setCoins(45.0);
+        exchange1.setLastVolume(List.of(324, 436, 584, 987, 674));
+
+        exchanges.add(exchange1);
+        return exchanges;
+    }
 
     private final List<DealClass> deals = new ArrayList<>();
     @PostMapping("/add-deal")
