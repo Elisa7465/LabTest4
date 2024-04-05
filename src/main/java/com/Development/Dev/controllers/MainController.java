@@ -1,17 +1,11 @@
 package com.Development.Dev.controllers;
 
-import org.springframework.stereotype.Controller;
+import com.Development.Dev.dto.*;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import com.Development.Dev.dto.DealClass;
-import com.Development.Dev.dto.CoinClass;
-import com.Development.Dev.dto.TrendClass;
-import com.Development.Dev.dto.ExchangesClass;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +65,39 @@ public class MainController {
 
         exchanges.add(exchange1);
         return exchanges;
+    }
+    @GetMapping("/portfolio")
+    public List<PortfolioClass> getPortfolio(){
+        List<PortfolioClass> portfolios=new ArrayList<>();
+
+        List<CoinClass> coins=new ArrayList<>();
+        CoinClass coin1=new CoinClass();
+        coin1.setCoinName("Bitcoin");
+        coin1.setCoinCode("BTC");
+        coin1.setVolume(34.0);
+        coin1.setPrice(3289476278.0);
+        coin1.setLastPrice(List.of(324, 436, 584, 987, 674));
+        coins.add(coin1);
+
+        List<DealClass> deals=new ArrayList<>();
+        DealClass deal1=new DealClass();
+        deal1.setData("2024-02-02T12:33:33");
+        deal1.setType("sell");
+        deal1.setPrice(3543256.0);
+        deal1.setVolume(3.0);
+        deal1.setCoinName("Bitcoin");
+        deal1.setCoinCode("BTC");
+        deals.add(deal1);
+
+        PortfolioClass portfolio1=new PortfolioClass();
+        portfolio1.setCoins(coins);
+        portfolio1.setDeals(deals);
+        portfolio1.setProfile_volume_usd(List.of(324.0,436.0,584.0,987.0,674.0));
+        portfolio1.setProfile_volume_btc(List.of(324.0,436.0,584.0,987.0,674.0));
+        portfolio1.setCurrent_volume_usd(345.0);
+        portfolio1.setCurrent_volume_btc(345.0);
+        portfolios.add(portfolio1);
+        return portfolios;
     }
 
     private final List<DealClass> deals = new ArrayList<>();
