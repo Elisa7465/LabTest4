@@ -1,18 +1,18 @@
 package com.Development.Dev.dto;
 import java.util.Date;
 public class DealClass {
-    private Date date;
+    private String date;
     private String type;
     private Double price;
     private Double volume;
     private String coinName;
     private String coinCode;
 
-    public Date getData() {
+    public String getData() {
         return date;
     }
 
-    public void setData(Date date) {
+    public void setData(String date) {
         this.date = date;
     }
 
