@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 @RestController
 public class MainController {
-    @GetMapping("/coins")
+    @GetMapping("/coinst")
     public List<CoinClass> getCoins() {
         List<CoinClass> coins = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class MainController {
 
         return coins;
     }
-    @GetMapping("/trends")
+    @GetMapping("/trendst")
     public List<TrendClass> getTrends() {
         // Создаем список трендов
         List<TrendClass> trends = new ArrayList<>();
@@ -50,7 +50,7 @@ public class MainController {
 
         return trends;
     }
-    @GetMapping("/exchanges")
+    @GetMapping("/exchangest")
     public List<ExchangesClass> getExchanges() {
         // Создаем список изменений
         List<ExchangesClass> exchanges = new ArrayList<>();
@@ -66,7 +66,7 @@ public class MainController {
         exchanges.add(exchange1);
         return exchanges;
     }
-    @GetMapping("/portfolio")
+    @GetMapping("/portfoliot")
     public List<PortfolioClass> getPortfolio(){
         List<PortfolioClass> portfolios=new ArrayList<>();
 
@@ -81,7 +81,7 @@ public class MainController {
 
         List<DealClass> deals=new ArrayList<>();
         DealClass deal1=new DealClass();
-        deal1.setData("2024-02-02T12:33:33");
+        deal1.setDate("2024-02-02T12:33:33");
         deal1.setType("sell");
         deal1.setPrice(3543256.0);
         deal1.setVolume(3.0);
@@ -101,7 +101,7 @@ public class MainController {
     }
 
     private final List<DealClass> deals = new ArrayList<>();
-    @PostMapping("/add-deal")
+    @PostMapping("/add-dealt")
     public List<DealClass> addDeal(@RequestBody DealClass deal) {
 
         // Добавляем сделку в список
