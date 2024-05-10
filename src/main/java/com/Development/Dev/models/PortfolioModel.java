@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Entity
-
 public class PortfolioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

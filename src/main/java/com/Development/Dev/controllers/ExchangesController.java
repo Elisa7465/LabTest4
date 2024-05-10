@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExchangesController {
     @Autowired
     private ExchangesRepository exchangesRepository;
-    @GetMapping("/exchanges")
+    @GetMapping("/api/exchanges")
     public Iterable<ExchangesModel> getAllExchanges() {
         return exchangesRepository.findAll();
     }
-    @PostMapping("/add-exchanges")
+    @PostMapping("/api/add-exchanges")
     public ExchangesModel addExchanges(@RequestBody ExchangesModel exchange) {
         exchangesRepository.save(exchange);
         return exchange;

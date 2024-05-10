@@ -14,11 +14,11 @@ public class CoinController {
     @Autowired
     private CoinRepository coinRepository;
 
-    @GetMapping("/coins")
+    @GetMapping("/api/coins")
     public Iterable<CoinModel> getAllCoins() {
         return coinRepository.findAll();
     }
-    @PostMapping("/add-coins")
+    @PostMapping("/api/add-coins")
     public CoinModel addCoins(@RequestBody CoinModel coin){
     coinRepository.save(coin);
     return coin;

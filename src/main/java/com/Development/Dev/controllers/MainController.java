@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 @RestController
 public class MainController {
-    @GetMapping("/coinst")
+    @GetMapping("/coins")
     public List<CoinClass> getCoins() {
         List<CoinClass> coins = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class MainController {
 
         return coins;
     }
-    @GetMapping("/trendst")
+    @GetMapping("/trends")
     public List<TrendClass> getTrends() {
         // Создаем список трендов
         List<TrendClass> trends = new ArrayList<>();
@@ -50,7 +50,7 @@ public class MainController {
 
         return trends;
     }
-    @GetMapping("/exchangest")
+    @GetMapping("/exchanges")
     public List<ExchangesClass> getExchanges() {
         // Создаем список изменений
         List<ExchangesClass> exchanges = new ArrayList<>();
@@ -66,7 +66,7 @@ public class MainController {
         exchanges.add(exchange1);
         return exchanges;
     }
-    @GetMapping("/portfoliot")
+    @GetMapping("/portfolio")
     public List<PortfolioClass> getPortfolio(){
         List<PortfolioClass> portfolios=new ArrayList<>();
 
@@ -101,7 +101,7 @@ public class MainController {
     }
 
     private final List<DealClass> deals = new ArrayList<>();
-    @PostMapping("/add-dealt")
+    @PostMapping("/add-deal")
     public List<DealClass> addDeal(@RequestBody DealClass deal) {
 
         // Добавляем сделку в список

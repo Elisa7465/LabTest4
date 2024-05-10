@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-
 public class TrendController {
     @Autowired
     private TrendRepository trendRepository;
     @Autowired
     private CoinRepository coinRepository;
-    @GetMapping("/trends")
+    @GetMapping("/api/trends")
     public Iterable<TrendModel> getAllTrends() {
         return trendRepository.findAll();
     }
-    @PostMapping("/add-trends")
+    @PostMapping("/api/add-trends")
     public TrendModel addTrends(@RequestBody CoinModel COIN){
     CoinModel coin= coinRepository.findById(COIN.getId()).orElse(null);
     if( coin!=null){

@@ -16,15 +16,15 @@ public class PortfolioController {
     private DealRepository dealRepository;
     @Autowired
     private CoinRepository coinRepository;
-    @GetMapping ("/portfolios")
+    @GetMapping ("/api/portfolios")
     public Iterable<PortfolioModel> getAllPortfolios() {
         return portfolioRepository.findAll();
     }
-    @GetMapping("/portfolios/{id}")
+    @GetMapping("/api/portfolios/{id}")
     public PortfolioModel getPortfolioById(@PathVariable Long id) {
         return portfolioRepository.findById(id).orElse(null);
     }
-    @PostMapping("/add-portfolio")
+    @PostMapping("/api/add-portfolio")
     public PortfolioModel addPortfolio(@RequestBody PortfolioModel portfolio) {
         // Сначала сохраняем связанные объекты
         for (CoinModel coin : portfolio.getCoins()) {
@@ -37,7 +37,12 @@ public class PortfolioController {
         portfolioRepository.save(portfolio);
         return portfolio;
     }
-    @PostMapping("/portfolio/{id}/add-deal")
+    @PostMapping("/api/add-portfoliobyid")
+    public PortfolioModel addPortfoliot(@RequestBody PortfolioModel portfolio) {
+        portfolioRepository.save(portfolio);
+        return portfolio;
+    }
+    @PostMapping("/api/portfolio/{id}/add-deal")
     public DealModel ADD_Deal(@PathVariable Long id, @RequestBody DealModel DEAL) {
         PortfolioModel portfolio = portfolioRepository.findById(id).orElse(null);
         if (portfolio != null) {
@@ -49,7 +54,7 @@ public class PortfolioController {
             return null;
         }
     }
-    @PostMapping("/portfolio/{id}/add-coin")
+    @PostMapping("/api/portfolio/{id}/add-coin")
     public CoinModel ADD_Coin(@PathVariable Long id, @RequestBody CoinModel COIN) {
         PortfolioModel portfolio = portfolioRepository.findById(id).orElse(null);
         if (portfolio != null) {
