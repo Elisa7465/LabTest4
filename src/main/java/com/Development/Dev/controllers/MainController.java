@@ -1,6 +1,9 @@
 package com.Development.Dev.controllers;
 
 import com.Development.Dev.dto.*;
+import com.Development.Dev.models.TaskLog;
+import com.Development.Dev.repositories.TaskLogRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -108,5 +111,12 @@ public class MainController {
         deals.add(deal);
         // Возвращаем список всех сделок после добавления новой
         return deals;
+    }
+    @Autowired
+    private TaskLogRepository taskLogRepository;
+
+    @GetMapping("/api/task-logs")
+    public Iterable<TaskLog> getAllTaskLogs() {
+        return taskLogRepository.findAll();
     }
 }
